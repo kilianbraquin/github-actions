@@ -1,0 +1,18 @@
+name: Callup
+concurrency:
+  group: callup-${{ inputs.text-to-log }}
+on:
+  workflow_call:
+    inputs:
+      text-to-log:
+        required: true
+        type: string
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.text-to-log }}
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
